@@ -4,7 +4,7 @@ import re
 
 
 ALPHA_RE = re.compile('[a-zA-Z]')
-SUFFIXES = ['ah', 'oh', 'oom', 'uh', 'eh', 'op', 'ueh', 'um', 'roow']
+SUFFIXES = ['ah', 'oh', 'oom', 'uh', 'eh', 'op', 'ueh', 'um', 'roow', 'omp']
 
 
 def dubstuppify(text):
