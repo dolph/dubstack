@@ -20,7 +20,6 @@
 """Utility methods for working with WSGI servers."""
 
 import logging
-import os
 import sys
 
 import eventlet
@@ -31,8 +30,6 @@ import routes.middleware
 import webob
 import webob.dec
 import webob.exc
-
-from paste import deploy
 
 
 class WritableLogger(object):

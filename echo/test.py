@@ -7,9 +7,9 @@ import sys
 
 from paste import deploy
 
-from keystonelight import logging
-from keystonelight import utils
-from keystonelight import wsgi
+from echo import logging
+from echo import utils
+from echo import wsgi
 
 
 ROOTDIR = os.path.dirname(os.path.dirname(__file__))

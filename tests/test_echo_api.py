@@ -1,16 +1,14 @@
 import json
-import uuid
 
-from keystonelight import client
-from keystonelight import models
-from keystonelight import test
-from keystonelight import utils
-from keystonelight.backends import kvs
+from echo import client
+from echo import models
+from echo import test
+from echo import utils
 
 
-class IdentityApi(test.TestCase):
+class EchoApi(test.TestCase):
   def setUp(self):
-    super(IdentityApi, self).setUp()
+    super(EchoApi, self).setUp()
     self.options = self.appconfig('default')
     app = self.loadapp('default')
     self.app = app

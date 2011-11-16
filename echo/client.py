@@ -1,13 +1,13 @@
 
-"""Client library for KeystoneLight API."""
+"""Client library for Echo API."""
 
 import json
 
 import httplib2
 import webob
 
-from keystonelight import service
-from keystonelight import wsgi
+from echo import service
+from echo import wsgi
 
 
 URLMAP = service.URLMAP
