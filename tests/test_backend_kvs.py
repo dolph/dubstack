@@ -1,8 +1,8 @@
 import uuid
 
-from keystonelight import models
-from keystonelight import test
-from keystonelight.backends import kvs
+from dubstack import models
+from dubstack import test
+from dubstack.backends import kvs
 
 
 class KvsIdentity(test.TestCase):

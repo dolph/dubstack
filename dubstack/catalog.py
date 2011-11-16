@@ -1,10 +1,4 @@
-# vim: tabstop=4 shiftwidth=4 softtabstop=4
-
-# the catalog interfaces
-
-import uuid
-
-from echo import utils
+from dubstack import utils
 
 
 class Manager(object):

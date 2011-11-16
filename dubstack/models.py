@@ -1,5 +1,3 @@
-
-
 class Token(dict):
   def __init__(self, id=None, user=None, tenant=None, *args, **kw):
     super(Token, self).__init__(id=id, user=user, tenant=tenant, *args, **kw)

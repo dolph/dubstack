@@ -6,10 +6,9 @@ import routes
 import webob.dec
 import webob.exc
 
-from echo import identity
-from echo import token
-from echo import utils
-from echo import wsgi
+from dubstack import identity
+from dubstack import token
+from dubstack import wsgi
 
 
 HIGH_LEVEL_CALLS = {

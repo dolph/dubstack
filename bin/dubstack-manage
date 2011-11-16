@@ -5,7 +5,7 @@ import sys
 import cli.app
 import cli.log
 
-from echo import client
+from dubstack import client
 
 
 DEFAULT_PARAMS = (
@@ -97,7 +97,7 @@ class Auth(BaseApp):
     self.add_param('keyvalues', nargs='+')
 
   def main(self):
-    """Attempt to authenticate against the echo API."""
+    """Attempt to authenticate against the dubstack API."""
     c = client.HttpClient(self.params.url, token=self.params.token)
     kv = self._parse_keyvalues(self.params.keyvalues)
     resp = c.authenticate(**kv)

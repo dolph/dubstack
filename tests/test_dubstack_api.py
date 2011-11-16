@@ -1,14 +1,14 @@
 import json
 
-from echo import client
-from echo import models
-from echo import test
-from echo import utils
+from dubstack import client
+from dubstack import models
+from dubstack import test
+from dubstack import utils
 
 
-class EchoApi(test.TestCase):
+class DubstackApi(test.TestCase):
   def setUp(self):
-    super(EchoApi, self).setUp()
+    super(DubstackApi, self).setUp()
     self.options = self.appconfig('default')
     app = self.loadapp('default')
     self.app = app

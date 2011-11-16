@@ -1,6 +1,6 @@
 import json
 
-from keystonelight import wsgi
+from dubstack import wsgi
 
 
 # Header used to transmit the auth token

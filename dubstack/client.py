@@ -1,13 +1,13 @@
 
-"""Client library for Echo API."""
+"""Client library for dubstack API."""
 
 import json
 
 import httplib2
 import webob
 
-from echo import service
-from echo import wsgi
+from dubstack import service
+from dubstack import wsgi
 
 
 URLMAP = service.URLMAP

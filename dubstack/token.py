@@ -4,8 +4,8 @@
 
 import uuid
 
-from keystonelight import logging
-from keystonelight import utils
+from dubstack import logging
+from dubstack import utils
 
 
 class Manager(object):

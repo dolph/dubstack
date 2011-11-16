@@ -1,5 +1,3 @@
-import ConfigParser
-import logging
 import os
 import unittest
 import subprocess
@@ -7,9 +5,9 @@ import sys
 
 from paste import deploy
 
-from echo import logging
-from echo import utils
-from echo import wsgi
+from dubstack import logging
+from dubstack import utils
+from dubstack import wsgi
 
 
 ROOTDIR = os.path.dirname(os.path.dirname(__file__))
