@@ -1,5 +1,6 @@
 """Generates dubstep lyrics."""
 
+import sys
 import re
 
 
@@ -22,4 +23,9 @@ def dubstuppify(text):
 
 
 if __name__ == '__main__':
-    dubstuppify(locals()['__doc__'])
+    if len(sys.argv) > 1:
+        text = sys.argv[1]
+    else:
+        text = locals()['__doc__']
+
+    dubstuppify(text)
