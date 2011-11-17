@@ -4,7 +4,7 @@ set -eu
 
 function usage {
   echo "Usage: $0 [OPTION]..."
-  echo "Run KeystoneLight's test suite(s)"
+  echo "Run dubstack's test suite(s)"
   echo ""
   echo "  -V, --virtual-env        Always use virtualenv.  Install automatically if not present"
   echo "  -N, --no-virtual-env     Don't use virtualenv.  Run tests in local environment"
@@ -86,7 +86,7 @@ function run_pep8 {
   ignore_dirs="*ajaxterm*"
   GLOBIGNORE="$ignore_scripts:$ignore_files:$ignore_dirs"
   srcfiles=`find bin -type f ! -name .*.swp`
-  srcfiles+=" keystonelight"
+  srcfiles+=" dubstack"
   # Just run PEP8 in current environment
   ${wrapper} pep8 --repeat --show-pep8 --show-source \
     --ignore=E202,E111 \

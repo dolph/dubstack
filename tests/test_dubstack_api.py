@@ -15,10 +15,6 @@ class DubstackApi(test.TestCase):
 
     self.identity_backend = utils.import_object(
         self.options['identity_driver'], options=self.options)
-    self.token_backend = utils.import_object(
-        self.options['token_driver'], options=self.options)
-    self.catalog_backend = utils.import_object(
-        self.options['catalog_driver'], options=self.options)
     self._load_fixtures()
 
   def _load_fixtures(self):
