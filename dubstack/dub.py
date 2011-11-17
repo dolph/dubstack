@@ -8,18 +8,28 @@ ALPHA_RE = re.compile('[a-zA-Z]')
 SUFFIXES = ['ah', 'oh', 'oom', 'uh', 'eh', 'op', 'ueh', 'um', 'roow', 'omp']
 
 
-def dubstuppify(text):
+def dubsteppify(text):
+    """Deterministically converts a body of text to dubstep lyrics"""
+    output = []
     prev = text[len(text) - 1]
 
     for char in [char for char in text if ALPHA_RE.search(char)]:
-        suffix = SUFFIXES[ord(prev) % len(SUFFIXES)]
-        suffix = suffix.upper() if char.upper() == char else suffix
+        womp = char_to_womp(prev, char)
         multiplier = (ord(prev) % 4) + 2
-        line = " ".join([str(char + suffix)] * multiplier)
-        print "\n".join([line] * 2)
-        print
+        line = " ".join([womp] * multiplier)
+        output.append(line)
+        output.append(line)
 
         prev = char
+
+    return "\n".join(output)
+
+
+def char_to_womp(entropy, char):
+    """Converts a character to a word, based on entropy"""
+    suffix = SUFFIXES[ord(entropy) % len(SUFFIXES)]
+    suffix = suffix.upper() if char.upper() == char else suffix
+    return str(char + suffix)
 
 
 if __name__ == '__main__':
@@ -28,4 +38,4 @@ if __name__ == '__main__':
     else:
         text = locals()['__doc__']
 
-    dubstuppify(text)
+    print dubsteppify(text)
