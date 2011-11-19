@@ -24,7 +24,7 @@ class DeterministicDubstep(object):
     prev = text[len(text) - 1]
 
     for char in [char for char in text if ALPHA_RE.search(char)]:
-      womp = self.char_to_womp(prev, char)
+      womp = self._char_to_womp(prev, char)
       multiplier = (ord(prev) % 4) + 2
       line = " ".join([womp] * multiplier)
       output.append(line)
@@ -41,7 +41,7 @@ class DeterministicDubstep(object):
     """Playback lyrics for the tenant in context"""
     return LYRICS_BY_TENANT[tenant_id]
 
-  def char_to_womp(self, entropy, char):
+  def _char_to_womp(self, entropy, char):
     """Converts a character to a word, based on entropy"""
     suffix = self.suffixes[ord(entropy) % len(self.suffixes)]
     suffix = suffix.upper() if char.upper() == char else suffix
