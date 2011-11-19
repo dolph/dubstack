@@ -1,4 +1,3 @@
-
 """Client library for dubstack API."""
 
 import json

@@ -59,9 +59,11 @@ class DubstepController(BaseApplication):
 
   def generate(self, context, **kwargs):
     text = kwargs.get('input')
-    logging.debug('SOURCE TEXT: %s', text)
     lyrics = self.dubstep_api.generate(context, text)
-    logging.debug('LYRICS: %s', lyrics)
+    return {'lyrics': lyrics}
+
+  def play(self, context, **kwargs):
+    lyrics = self.dubstep_api.play(context)
     return {'lyrics': lyrics}
 
 

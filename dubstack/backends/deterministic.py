@@ -7,6 +7,9 @@ import re
 ALPHA_RE = re.compile('[a-zA-Z]')
 SUFFIXES = ['ah', 'oh', 'oom', 'uh', 'eh', 'op', 'ueh', 'um', 'roow', 'omp']
 
+# This is in-memory storage for previously computed lyrics
+LYRICS_BY_TENANT = {}
+
 
 class DeterministicDubstep(object):
   def __init__(self, options, suffixes=None):
@@ -15,7 +18,7 @@ class DeterministicDubstep(object):
     else:
       self.suffixes = SUFFIXES
 
-  def generate(self, text):
+  def generate(self, tenant_id, text):
     """Deterministically converts a body of text to dubstep lyrics"""
     output = []
     prev = text[len(text) - 1]
@@ -29,7 +32,14 @@ class DeterministicDubstep(object):
 
       prev = char
 
-    return "\n".join(output)
+    # persist the computed lyrics so they can be played back
+    LYRICS_BY_TENANT[tenant_id] = "\n".join(output)
+
+    return LYRICS_BY_TENANT[tenant_id]
+
+  def play(self, tenant_id):
+    """Playback lyrics for the tenant in context"""
+    return LYRICS_BY_TENANT[tenant_id]
 
   def char_to_womp(self, entropy, char):
     """Converts a character to a word, based on entropy"""

@@ -6,6 +6,12 @@ from dubstack import utils
 
 
 class DubstackApi(test.TestCase):
+  expected_lyrics = \
+    "aroow aroow aroow aroow\n" \
+    "aroow aroow aroow aroow\n" \
+    "bum bum bum\n" \
+    "bum bum bum"
+
   def setUp(self):
     super(DubstackApi, self).setUp()
     self.options = self.appconfig('default')
@@ -29,13 +35,15 @@ class DubstackApi(test.TestCase):
     return token
 
   def test_generate_lyrics(self):
-    expected_lyrics = \
-        "aroow aroow aroow aroow\n" \
-        "aroow aroow aroow aroow\n" \
-        "bum bum bum\n" \
-        "bum bum bum"
     c = client.TestClient(self.app)
+
+    # generate lyrics
     post_data = {'input': 'ab'}
     resp = c.generate(**post_data)
     data = json.loads(resp.body)
-    self.assertEquals(expected_lyrics, data['lyrics'])
+    self.assertEquals(self.expected_lyrics, data['lyrics'])
+
+    # play back lyrics
+    resp = c.play()
+    data = json.loads(resp.body)
+    self.assertEquals(self.expected_lyrics, data['lyrics'])

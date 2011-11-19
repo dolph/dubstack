@@ -8,4 +8,11 @@ class Manager(object):
     self.options = options
 
   def generate(self, context, source):
-    return self.driver.generate(source)
+    # this should become tenant id when middleware is implemented
+    tenant = context['token_id']
+    return self.driver.generate(tenant, source)
+
+  def play(self, context):
+    # this should become tenant id when middleware is implemented
+    tenant = context['token_id']
+    return self.driver.play(tenant)
