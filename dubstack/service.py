@@ -6,6 +6,7 @@ import routes
 import webob.dec
 import webob.exc
 
+from dubstack import dubstep
 from dubstack import identity
 from dubstack import token
 from dubstack import wsgi
@@ -19,6 +20,8 @@ HIGH_LEVEL_CALLS = {
     'get_tenant_by_name': ('GET', '/tenant_name/%(tenant_name)s'),
     'get_extras': ('GET', '/extras/%(tenant_id)s-%(user_id)s'),
     'get_token': ('GET', '/token/%(token_id)s'),
+    'generate': ('POST', '/wompwomps'),
+    'play': ('GET', '/wompwomps'),
     }
 
 # NOTE(termie): creates are seperate from updates to allow duplication checks
@@ -99,10 +102,18 @@ class IdentityController(BaseApplication):
   def __init__(self, options):
     self.identity_api = identity.Manager(options=options)
     self.token_api = token.Manager(options=options)
+    self.dubstep_api = dubstep.Manager(options=options)
     self.options = options
 
   def noop(self, context, *args, **kw):
     return ''
+
+  def generate(self, context, **kwargs):
+    text = kwargs.get('input')
+    logging.debug('SOURCE TEXT: %s', text)
+    lyrics = self.dubstep_api.generate(context, text)
+    logging.debug('LYRICS: %s', lyrics)
+    return {'lyrics': lyrics}
 
   def authenticate(self, context, **kwargs):
     user_ref, tenant_ref, extras_ref = self.identity_api.authenticate(

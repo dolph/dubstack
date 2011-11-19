@@ -40,6 +40,18 @@ class DubstackApi(test.TestCase):
     token = json.loads(resp.body)
     return token
 
+  def test_generate_lyrics(self):
+    expected_lyrics = \
+        "aroow aroow aroow aroow" \
+        "aroow aroow aroow aroow" \
+        "bum bum bum" \
+        "bum bum bum"
+    c = client.TestClient(self.app)
+    post_data = {'input': 'ab'}
+    resp = c.generate(**post_data)
+    data = json.loads(resp.body)
+    self.assertEquals(expected_lyrics, data['lyrics'])
+
   def test_authenticate(self):
     c = client.TestClient(self.app)
     post_data = {'user_id': self.user_foo['id'],
