@@ -1,14 +1,11 @@
 import json
 import logging
-import uuid
 
 import routes
 import webob.dec
 import webob.exc
 
 from dubstack import dubstep
-from dubstack import identity
-from dubstack import token
 from dubstack import wsgi
 
 
